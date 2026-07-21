@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim Graveyards - Japan</title>
+    <style>
+        :root {
+            --ink: #1b2b28;
+            --paper: #f4efe4;
+            --deep-green: #0f3d3e;
+            --gold: #b98a2f;
+            --line: rgba(15, 61, 62, 0.15);
+            --card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans', 'Segoe UI', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pattern {
+            width: 100%;
+            height: 10px;
+            background:
+                linear-gradient(135deg, var(--deep-green) 25%, transparent 25%) -5px 0,
+                linear-gradient(225deg, var(--deep-green) 25%, transparent 25%) -5px 0;
+            background-size: 10px 10px;
+            background-color: var(--gold);
+        }
+
+        header {
+            text-align: center;
+            padding: 48px 20px 24px;
+            max-width: 640px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0 0 8px;
+            color: var(--deep-green);
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        main {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 28px 24px;
+            box-shadow: 0 6px 20px rgba(15, 61, 62, 0.06);
+        }
+
+        .card.center {
+            text-align: center;
+        }
+
+        .notice {
+            background: #fdf3e2;
+            border: 1px solid #e6cfa0;
+            color: #5c4413;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-green);
+            opacity: 0.7;
+            margin: 0 0 14px;
+            text-align: left;
+        }
+
+        .place-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .place-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: var(--paper);
+            text-decoration: none;
+            color: var(--ink);
+            transition: background .15s ease, transform .15s ease;
+        }
+
+        .place-item:hover {
+            background: #ece5d3;
+            transform: translateX(2px);
+        }
+
+        .place-item .name {
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+
+        .place-item .region {
+            font-size: 0.82rem;
+            opacity: 0.65;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .place-item .note {
+            font-size: 0.78rem;
+            opacity: 0.6;
+            display: block;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        .place-item .arrow {
+            opacity: 0.5;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .place-item.disputed {
+            opacity: 0.75;
+            border-style: dashed;
+        }
+
+        .place-item .status-tag {
+            font-size: 0.7rem;
+            background: #c94b3a;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        .org-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .org-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+            background: var(--paper);
+        }
+
+        .org-item .org-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--deep-green);
+            margin: 0 0 4px;
+        }
+
+        .org-item .org-desc {
+            font-size: 0.88rem;
+            opacity: 0.8;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
+
+        .org-item .org-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .org-item a.link-btn {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--deep-green);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .org-item a.link-btn:hover {
+            background: #0c3132;
+        }
+
+        .org-item a.link-btn.secondary {
+            background: transparent;
+            color: var(--deep-green);
+            border: 1px solid var(--deep-green);
+        }
+
+        footer {
+            padding: 24px 20px;
+            font-size: 0.82rem;
+            opacity: 0.65;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .place-item {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pattern"></div>
+
+    <header>
+        <h1>Muslim Graveyards</h1>
+        <p>Islamic burial sites in Japan, and the organizations that help arrange Janazah (funeral) and burial.</p>
+    </header>
+
+    <main>
+        <div class="notice">
+            Japan has very few burial grounds that accept Islamic burial — most sources cite around seven sites
+            nationwide, concentrated mainly in the Kanto region. If you are arranging a burial, please contact the
+            organizations below as early as possible; in Islam, burial is meant to take place as soon as possible after
+            death.
+        </div>
+
+        <div class="card">
+            <p class="section-title">Known Muslim graveyards in Japan</p>
+            <div class="place-list" id="placeList"></div>
+        </div>
+
+        <div class="card">
+            <p class="section-title">Who to contact for burial / Janazah services</p>
+            <div class="org-list" id="orgList"></div>
+        </div>
+    </main>
+
+    <footer>
+        Graveyard availability, rules, and contact details change over time, and some proposed sites face local
+        opposition or are not yet operational. Please confirm directly with the listed organization or your embassy
+        before making arrangements. This page is informational and not a substitute for official confirmation.
+    </footer>
+
+    <script>
+        const placeListEl = document.getElementById('placeList');
+        const orgListEl = document.getElementById('orgList');
+
+        // Known burial sites that accept Islamic burial in Japan.
+        // "operational" sites are active and in use; "disputed" means the
+        // project has faced local opposition or is not yet confirmed operating.
+        const graveyards = [
+            { name: "Yawara Muslim Graveyard", region: "Ibaraki Prefecture", note: "Managed by Japan Islamic Trust", status: "operational" },
+            { name: "Yamanashi Muslim Graveyard", region: "Enzan, Yamanashi Prefecture", note: "Japan's first Muslim cemetery, est. 1969, run by Japan Muslim Association", status: "operational" },
+            { name: "Shimizu Islamic Cemetery", region: "Shizuoka Prefecture", note: "", status: "operational" },
+            { name: "Tama Muslim Graveyard", region: "Tokyo", note: "", status: "operational" },
+            { name: "Yoichi Cemetery (Muslim section)", region: "Hokkaido", note: "", status: "operational" },
+            { name: "Hashimoto Muslim Graveyard", region: "Wakayama Prefecture", note: "", status: "operational" },
+            { name: "Kobe Foreigners Cemetery", region: "Hyogo Prefecture", note: "Accepts foreign nationals of various faiths", status: "operational" },
+            { name: "Hiji / Beppu Muslim Cemetery (proposed)", region: "Oita Prefecture", note: "Kyushu has no active Muslim cemetery; this project has faced local opposition and its status is uncertain", status: "disputed" }
+        ];
+
+        function mapsSearchUrl(query) {
+            return 'https://www.google.com/maps/search/' + encodeURIComponent(query);
+        }
+
+        function renderGraveyards() {
+            placeListEl.innerHTML = '';
+            graveyards.forEach(g => {
+                const a = document.createElement('a');
+                a.className = 'place-item' + (g.status === 'disputed' ? ' disputed' : '');
+                a.href = mapsSearchUrl(g.name + ' ' + g.region);
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.innerHTML = `
+        <span>
+          <span class="name">${g.name}</span>
+          <span class="region">${g.region}</span>
+          ${g.note ? `<span class="note">${g.note}</span>` : ''}
+        </span>
+        <span style="display:flex;align-items:center;">
+          ${g.status === 'disputed' ? '<span class="status-tag">Unconfirmed</span>' : ''}
+          <span class="arrow">&#8250;</span>
+        </span>
+      `;
+                placeListEl.appendChild(a);
+            });
+        }
+        renderGraveyards();
+
+        // Organizations in Japan that coordinate Islamic funerals and burials.
+        const organizations = [
+            {
+                name: "Japan Islamic Trust (Otsuka Masjid)",
+                desc: "Coordinates ghusl (washing), kafan (shrouding), Janazah prayer, and burial at Yawara Muslim Graveyard in Ibaraki.",
+                links: [
+                    { label: "Funeral Service Info", url: "https://islam.or.jp/en/services/janazza-funeral-ceremony/" },
+                    { label: "Website", url: "https://islam.or.jp/en/" }
+                ]
+            },
+            {
+                name: "Japan Muslim Association (JMA)",
+                desc: "Japan's oldest Muslim organization; operates the Yamanashi Muslim Graveyard and can advise on Islamic burial matters.",
+                links: [
+                    { label: "Website", url: "https://www.muslim.or.jp/" }
+                ]
+            },
+            {
+                name: "Islamic Circle of Japan (ICOJ)",
+                desc: "Community organization that can help connect families with local mosques and funeral coordination in the Kanto area.",
+                links: [
+                    { label: "Website", url: "https://islaminjapan.org/" }
+                ]
+            },
+            {
+                name: "Japan Dawah Foundation (Shizuoka Muslim Association)",
+                desc: "Serves the Muslim community in the Shizuoka area, including guidance related to the Shimizu Islamic Cemetery.",
+                links: [
+                    { label: "Website", url: "https://muslimjapan.com/" }
+                ]
+            },
+            {
+                name: "Your embassy",
+                desc: "If repatriation of the body to the home country is preferred instead of burial in Japan, the deceased's embassy in Japan can advise on required documents and procedures.",
+                links: []
+            }
+        ];
+
+        function renderOrgs() {
+            orgListEl.innerHTML = '';
+            organizations.forEach(o => {
+                const div = document.createElement('div');
+                div.className = 'org-item';
+                const linksHtml = o.links.map((l, i) =>
+                    `<a class="link-btn${i > 0 ? ' secondary' : ''}" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+                ).join('');
+                div.innerHTML = `
+        <p class="org-name">${o.name}</p>
+        <p class="org-desc">${o.desc}</p>
+        <div class="org-links">${linksHtml}</div>
+      `;
+                orgListEl.appendChild(div);
+            });
+        }
+        renderOrgs();
+    </script>
+
+</body>
+
+</html>

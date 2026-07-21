@@ -1,0 +1,71 @@
+.home{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.home h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.home p{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.search-box{
+    margin-top:30px;
+}
+
+.search-box input{
+    width:350px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.search-box button{
+    padding:12px 20px;
+    border:none;
+    background:#198754;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.categories{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.category-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    width:250px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.cities{
+    text-align:center;
+    padding:50px;
+}
+
+.city-list{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.city-list span{
+    background:#f1f1f1;
+    padding:10px 20px;
+    border-radius:20px;
+}

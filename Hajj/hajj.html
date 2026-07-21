@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hajj from Japan</title>
+    <style>
+        :root {
+            --ink: #1b2b28;
+            --paper: #f4efe4;
+            --deep-green: #0f3d3e;
+            --gold: #b98a2f;
+            --line: rgba(15, 61, 62, 0.15);
+            --card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans', 'Segoe UI', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pattern {
+            width: 100%;
+            height: 10px;
+            background:
+                linear-gradient(135deg, var(--deep-green) 25%, transparent 25%) -5px 0,
+                linear-gradient(225deg, var(--deep-green) 25%, transparent 25%) -5px 0;
+            background-size: 10px 10px;
+            background-color: var(--gold);
+        }
+
+        header {
+            text-align: center;
+            padding: 48px 20px 24px;
+            max-width: 640px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0 0 8px;
+            color: var(--deep-green);
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        main {
+            width: 100%;
+            max-width: 620px;
+            padding: 0 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 28px 24px;
+            box-shadow: 0 6px 20px rgba(15, 61, 62, 0.06);
+        }
+
+        .notice {
+            background: #fdf3e2;
+            border: 1px solid #e6cfa0;
+            color: #5c4413;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-green);
+            opacity: 0.7;
+            margin: 0 0 14px;
+            text-align: left;
+        }
+
+        /* Step list */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--deep-green);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-body h3 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+            color: var(--deep-green);
+        }
+
+        .step-body p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.55;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checklist li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .checklist li svg {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            color: var(--gold);
+        }
+
+        /* Org / link cards */
+        .org-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .org-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+            background: var(--paper);
+        }
+
+        .org-item .org-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--deep-green);
+            margin: 0 0 4px;
+        }
+
+        .org-item .org-desc {
+            font-size: 0.88rem;
+            opacity: 0.8;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
+
+        .org-item .org-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .org-item a.link-btn {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--deep-green);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .org-item a.link-btn:hover {
+            background: #0c3132;
+        }
+
+        .org-item a.link-btn.secondary {
+            background: transparent;
+            color: var(--deep-green);
+            border: 1px solid var(--deep-green);
+        }
+
+        .org-item .official-tag {
+            font-size: 0.7rem;
+            background: var(--gold);
+            color: #2a2000;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        footer {
+            padding: 24px 20px;
+            font-size: 0.82rem;
+            opacity: 0.65;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 620px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pattern"></div>
+
+    <header>
+        <h1>Hajj from Japan</h1>
+        <p>What you need to prepare, and the platforms and agencies that can help you register and travel.</p>
+    </header>
+
+    <main>
+        <div class="notice">
+            Hajj rules, quotas, and registration steps are set by Saudi Arabia's Ministry of Hajj and Umrah and can
+            change every year. Always confirm current requirements on the official Nusuk platform before booking
+            anything.
+        </div>
+
+        <div class="card">
+            <p class="section-title">How the process generally works</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Register on Nusuk Hajj</h3>
+                        <p>Japan is one of the Muslim-minority countries served through Saudi Arabia's official Nusuk
+                            Hajj platform. You create a pilgrim profile there with your passport details before anything
+                            else.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h3>Get verified</h3>
+                        <p>Nusuk checks your documents and marks your profile as a "Verified Pilgrim." This makes you
+                            eligible to select a package once bookings open.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <h3>Choose a package</h3>
+                        <p>Packages are sold directly through Nusuk by authorized providers and typically bundle visa,
+                            flights, accommodation in Makkah/Madinah, meals, and transport. You can also book through a
+                            Japan-based agency that assists with the Nusuk process.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
+                        <h3>Prepare documents and health requirements</h3>
+                        <p>Finalize your passport, vaccination certificate, and any other paperwork before departure
+                            (see checklist below).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="section-title">Things you'll typically need</p>
+            <ul class="checklist" id="checklist"></ul>
+        </div>
+
+        <div class="card">
+            <p class="section-title">Official platform</p>
+            <div class="org-list" id="officialList"></div>
+        </div>
+
+        <div class="card">
+            <p class="section-title">Agencies in Japan that help with Hajj / Umrah</p>
+            <div class="org-list" id="agencyList"></div>
+        </div>
+    </main>
+
+    <footer>
+        Passport validity rules, vaccine requirements (such as the meningitis ACWY certificate), and package pricing
+        change from year to year and are set by Saudi authorities. This page is a starting point — please verify
+        current, exact requirements directly on Nusuk or with your chosen agency and the Saudi Arabia embassy in Japan
+        before finalizing travel plans.
+    </footer>
+
+    <script>
+        const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>`;
+
+        const checklistItems = [
+            "Valid passport — most guidance recommends at least 6 months of validity remaining beyond your travel dates.",
+            "Nusuk pilgrim profile — created and verified with your passport details before packages open.",
+            "Hajj visa — issued as part of your Nusuk package; individuals cannot get a Hajj visa outside this process.",
+            "Proof of vaccination — a meningitis (ACWY) vaccination certificate is generally required; check current Saudi Ministry of Health rules for any other vaccines needed in the year you travel.",
+            "Return flight and accommodation — included in most Nusuk 'All-Inclusive' packages, or arranged separately depending on your package type.",
+            "Muhrim/travel companion arrangements for women pilgrims, if required — confirm current rules with your agency, as requirements have varied by year.",
+            "Budget for the package plus incidentals — Hajj packages sold through Nusuk have ranged roughly from the several-thousand-dollar level upward depending on category; always confirm current pricing directly."
+        ];
+
+        const checklistEl = document.getElementById('checklist');
+        checklistItems.forEach(text => {
+            const li = document.createElement('li');
+            li.innerHTML = `${checkIcon}<span>${text}</span>`;
+            checklistEl.appendChild(li);
+        });
+
+        const officialPlatforms = [
+            {
+                name: "Nusuk Hajj",
+                desc: "The official platform overseen by Saudi Arabia's Ministry of Hajj and Umrah. Registration, package selection, and payment for pilgrims from serviced countries (including Japan) all go through here.",
+                official: true,
+                links: [
+                    { label: "Nusuk Hajj Platform", url: "https://hajj.nusuk.sa/" },
+                    { label: "Serviced Countries", url: "https://hajj.nusuk.sa/ServicedCountries" }
+                ]
+            }
+        ];
+
+        const agencies = [
+            {
+                name: "HIS Hajj & Umrah (Japan)",
+                desc: "One of Japan's major travel agencies; runs dedicated Hajj and Umrah tour programs for Japan-based pilgrims.",
+                links: [
+                    { label: "HIS Umrah/Hajj Page", url: "https://www.his-j.com/tyo/tour/umrah/index.html" }
+                ]
+            },
+            {
+                name: "No.1 Travel (Across Group)",
+                desc: "Japan travel agency offering Hajj and Umrah tour packages with logistics support for Japan-based pilgrims.",
+                links: [
+                    { label: "Hajj/Umrah Page", url: "https://no1-travel.com/umrah_hajj/" }
+                ]
+            },
+            {
+                name: "MKJ Travel",
+                desc: "A Japan-based Muslim tour operator specializing in customizable Hajj and Umrah travel itineraries.",
+                links: [
+                    { label: "Website", url: "https://mkjtravel.com/" }
+                ]
+            }
+        ];
+
+        function renderOrgList(containerId, items) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = '';
+            items.forEach(o => {
+                const div = document.createElement('div');
+                div.className = 'org-item';
+                const linksHtml = o.links.map((l, i) =>
+                    `<a class="link-btn${i > 0 ? ' secondary' : ''}" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+                ).join('');
+                div.innerHTML = `
+        <p class="org-name">${o.name}${o.official ? '<span class="official-tag">Official</span>' : ''}</p>
+        <p class="org-desc">${o.desc}</p>
+        <div class="org-links">${linksHtml}</div>
+      `;
+                el.appendChild(div);
+            });
+        }
+
+        renderOrgList('officialList', officialPlatforms);
+        renderOrgList('agencyList', agencies);
+    </script>
+
+</body>
+
+</html>

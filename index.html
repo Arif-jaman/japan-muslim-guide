@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en, arabic, ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halal Restaurant Japan | Find Halal Food in Japan</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div id="popup" class="popup">
+        السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ
+    </div>
+
+    <button onclick="showPopup()">Click Me</button>
+
+
+
+
+
+    <!-- Header -->
+    <header class="header">
+        <div style="color: rgb(230, 212, 7); font-size: medium;">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ
+        </div>
+        <div class="logo">🌙 Halal <span>Restaurant</span> Japan</div>
+        <p class="tagline">The Best Guide to Halal Food in Japan | Find Halal Food in Japan</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./Home1/Home.html">🏠 Home</a>
+        <a href="./Restaurants/rest.html">🍜 Restaurants</a>
+        <a href="./prayerRoom/pray.html">🕌 Prayer Rooms</a>
+        <a href="./Sushi/sushi.html">🍣 Sushi </a>
+        <a href="./graveyard/grav.html"> 🪦 Muslim Graveyard</a>
+        <a href="./contactUs/cont.html"> 📱Contact us</a>
+        <a href="./Hajj/hajj.html">🕋 Hajj</a>
+        <a href="./Donation/donation.html">💰  Donation</a>
+
+
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>🍽️ Enjoy Halal Food in Japan</h1>
+        <p>Discover halal restaurants, prayer rooms, and sushi bars across Japan including Tokyo, Osaka, and Kyoto</p>
+    </section>
+
+    <!-- Search -->
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" placeholder="Enter area or restaurant name...">
+            <button>🔍 Search</button>
+        </div>
+    </div>
+
+    <!-- Filters -->
+   
+
+    <!-- Map Section -->
+    <section class="map-section" id="map-section">
+        <h2>📍 Restaurant Map</h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- Restaurant Cards -->
+    <section class="restaurants" id="restaurants">
+        <h2>🍜 Popular Halal Restaurants</h2>
+        <div class="restaurant-grid">
+
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card">
+
+                <div class="feature">
+
+                </div>
+
+                <div class="card-content">
+                    <h3>池袋</h3>
+                    <div class="location">📍 Ikebukuro, Tokyo</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Certified Restaurant</span>
+                        <span class="tag prayer">🕌 Prayer Room</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.8</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 11:00-22:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="./池袋/restaurant.html" class="btn btn-secondary">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card">
+                <div class="card-image">🍣</div>
+                <div class="card-content">
+                    <h3>Halal Sushi Tokyo</h3>
+                    <div class="location">📍 Shinjuku, Tokyo</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Certified</span>
+                        <span class="tag">🍣 Sushi Bar</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.9</span>
+                        <span class="feature"><span class="feature-icon">💴</span> ¥2000-5000</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 12:00-21:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="./池袋/html/restaurant.html">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card">
+                <div class="card-image">🥙</div>
+                <div class="card-content">
+                    <h3>Istanbul Kitchen Osaka</h3>
+                    <div class="location">📍 Namba, Osaka</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Certified</span>
+                        <span class="tag prayer">🕌 Prayer Room</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.7</span>
+                        <span class="feature"><span class="feature-icon">💴</span> ¥1000-2500</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 11:30-23:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="#" class="btn btn-secondary">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant 4 -->
+            <div class="restaurant-card">
+                <div class="card-image">🍜</div>
+                <div class="card-content">
+                    <h3>Naritaya Halal Ramen</h3>
+                    <div class="location">📍 Narita, Chiba</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Certified</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.6</span>
+                        <span class="feature"><span class="feature-icon">💴</span> ¥900-1200</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 10:00-20:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="#" class="btn btn-secondary">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant 5 -->
+            <div class="restaurant-card">
+                <div class="card-image">🍖</div>
+                <div class="card-content">
+                    <h3>Gyumon Halal Yakiniku</h3>
+                    <div class="location">📍 Ikebukuro, Tokyo</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Certified</span>
+                        <span class="tag prayer">🕌 Prayer Room</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.8</span>
+                        <span class="feature"><span class="feature-icon">💴</span> ¥3000-6000</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 17:00-23:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="#" class="btn btn-secondary">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurant 6 -->
+            <div class="restaurant-card">
+                <div class="card-image">🍱</div>
+                <div class="card-content">
+                    <h3>Honke Owariya Kyoto</h3>
+                    <div class="location">📍 Gion, Kyoto</div>
+                    <div class="tags">
+                        <span class="tag halal">✓ Halal Menu Available</span>
+                    </div>
+                    <div class="features">
+                        <span class="feature"><span class="feature-icon">⭐</span> 4.5</span>
+                        <span class="feature"><span class="feature-icon">💴</span> ¥1500-3000</span>
+                        <span class="feature"><span class="feature-icon">🕐</span> 11:00-20:00</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">📍 View Map</a>
+                        <a href="#" class="btn btn-secondary">🔗 Website</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Info Sections -->
+    <section class="info-sections" id="prayer">
+
+        <!-- Prayer Room Section -->
+        <div class="info-card">
+            <div class="info-icon">🕌</div>
+            <h3>Prayer Rooms</h3>
+            <p>List of prayer rooms in various cities across Japan</p>
+            <ul class="info-list">
+                <li>🕋 Tokyo Camii Mosque - Tokyo</li>
+                <li>🕋 Kobe Muslim Mosque - Kobe</li>
+                <li>🕋 Osaka Ibaraki Mosque - Osaka</li>
+                <li>🕋 Nagoya Mosque - Nagoya</li>
+                <li>🕋 Fukuoka Masjid - Fukuoka</li>
+                <li>🛐 Narita Airport Prayer Room</li>
+                <li>🛐 Haneda Airport Prayer Room</li>
+            </ul>
+        </div>
+
+        <!-- Sushi Bar Section -->
+        <div class="info-card" id="sushi">
+            <div class="info-icon">🍣</div>
+            <h3>Halal Sushi Bars</h3>
+            <p>Halal certified sushi restaurants</p>
+            <ul class="info-list">
+                <li>🍣 Halal Sushi Shinjuku - Tokyo</li>
+                <li>🍣 Sushi Masa Asakusa - Tokyo</li>
+                <li>🍣 Kiku Sushi Osaka - Osaka</li>
+                <li>🍣 Halal Sushi Kyoto - Kyoto</li>
+                <li>🍣 Muslim Friendly Sushi - Ikebukuro</li>
+            </ul>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="info-card">
+            <div class="info-icon">💡</div>
+            <h3>Important Tips</h3>
+            <p>Things to know before eating halal food in Japan</p>
+            <ul class="info-list">
+                <li>✅ Check the halal certificate</li>
+                <li>⚠️ Avoid mirin and sake</li>
+                <li>🐷 Tonkotsu ramen uses pork broth</li>
+                <li>🍶 Soy sauce may contain alcohol</li>
+                <li>📱 Use the Halal Gourmet Japan app</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Add Restaurant</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p>© 2026 Halal Restaurant Japan | Your Guide to Halal Food in Japan 🌙</p>
+    </footer>
+
+    <!-- Leaflet Map Script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

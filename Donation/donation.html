@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation - Japan</title>
+    <style>
+        :root {
+            --ink: #1b2b28;
+            --paper: #f4efe4;
+            --deep-green: #0f3d3e;
+            --gold: #b98a2f;
+            --line: rgba(15, 61, 62, 0.15);
+            --card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans', 'Segoe UI', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pattern {
+            width: 100%;
+            height: 10px;
+            background:
+                linear-gradient(135deg, var(--deep-green) 25%, transparent 25%) -5px 0,
+                linear-gradient(225deg, var(--deep-green) 25%, transparent 25%) -5px 0;
+            background-size: 10px 10px;
+            background-color: var(--gold);
+        }
+
+        header {
+            text-align: center;
+            padding: 48px 20px 24px;
+            max-width: 640px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0 0 8px;
+            color: var(--deep-green);
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        main {
+            width: 100%;
+            max-width: 620px;
+            padding: 0 20px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 28px 24px;
+            box-shadow: 0 6px 20px rgba(15, 61, 62, 0.06);
+        }
+
+        .notice {
+            background: #fdf3e2;
+            border: 1px solid #e6cfa0;
+            color: #5c4413;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            font-weight: 600;
+            font-size: 0.92rem;
+            cursor: pointer;
+            color: var(--ink);
+        }
+
+        .tab.active {
+            background: var(--deep-green);
+            color: #fff;
+            border-color: var(--deep-green);
+        }
+
+        .panel {
+            display: none;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-green);
+            opacity: 0.7;
+            margin: 20px 0 14px;
+            text-align: left;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .org-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .org-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px 16px;
+            background: var(--paper);
+        }
+
+        .org-item .org-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--deep-green);
+            margin: 0 0 4px;
+        }
+
+        .org-item .org-desc {
+            font-size: 0.88rem;
+            opacity: 0.8;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
+
+        .org-item .org-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .org-item a.link-btn {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--deep-green);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .org-item a.link-btn:hover {
+            background: #0c3132;
+        }
+
+        .org-item a.link-btn.secondary {
+            background: transparent;
+            color: var(--deep-green);
+            border: 1px solid var(--deep-green);
+        }
+
+        .org-item .tag {
+            font-size: 0.7rem;
+            background: var(--gold);
+            color: #2a2000;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        footer {
+            padding: 24px 20px;
+            font-size: 0.82rem;
+            opacity: 0.65;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 620px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pattern"></div>
+
+    <header>
+        <h1>Donation</h1>
+        <p>Where to give Zakat/Sadaqah, and where to ask for help if you or your family are in need.</p>
+    </header>
+
+    <main>
+        <div class="notice">
+            For exact bank transfer details, always use the organization's own official page — account numbers and fund
+            names can change, and this page intentionally does not reproduce specific account numbers to avoid outdated
+            or incorrect information.
+        </div>
+
+        <div class="card">
+            <div class="tabs">
+                <button class="tab active" data-tab="give">I want to give</button>
+                <button class="tab" data-tab="receive">I need help</button>
+            </div>
+
+            <div class="panel active" id="panel-give">
+                <p class="section-title">Give in Japan</p>
+                <div class="org-list" id="giveJapanList"></div>
+
+                <p class="section-title">Give internationally</p>
+                <div class="org-list" id="giveGlobalList"></div>
+            </div>
+
+            <div class="panel" id="panel-receive">
+                <p class="section-title">Request assistance in Japan</p>
+                <div class="org-list" id="receiveList"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Fund names, eligibility rules, and contact details can change. Please confirm current information directly with
+        each organization before sending money or requesting assistance, and be cautious of anyone asking you to donate
+        outside an organization's official channels.
+    </footer>
+
+    <script>
+        function renderOrgList(containerId, items) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = '';
+            items.forEach(o => {
+                const div = document.createElement('div');
+                div.className = 'org-item';
+                const linksHtml = o.links.map((l, i) =>
+                    `<a class="link-btn${i > 0 ? ' secondary' : ''}" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+                ).join('');
+                div.innerHTML = `
+        <p class="org-name">${o.name}${o.tag ? `<span class="tag">${o.tag}</span>` : ''}</p>
+        <p class="org-desc">${o.desc}</p>
+        <div class="org-links">${linksHtml}</div>
+      `;
+                el.appendChild(div);
+            });
+        }
+
+        // Organizations in Japan where you can give Zakat / Sadaqah.
+        const giveJapan = [
+            {
+                name: "Japan Islamic Trust (Otsuka Masjid)",
+                desc: "Accepts Zakat Fitr and general Sadaqah, and runs specific funds: mosque operations, the Otsuka Masjid expansion project, an orphan (Yatim) support fund, and a scholarship fund for Muslim students in Japan struggling with school costs.",
+                tag: "Multiple funds",
+                links: [
+                    { label: "Donation Page", url: "https://islam.or.jp/en/donation/" }
+                ]
+            },
+            {
+                name: "Japan Muslim Association (JMA)",
+                desc: "Japan's oldest Muslim organization; can advise on local Zakat distribution and community support activities.",
+                links: [
+                    { label: "Website", url: "https://www.muslim.or.jp/" }
+                ]
+            }
+        ];
+
+        // International Islamic charities widely used for Zakat/Sadaqah.
+        const giveGlobal = [
+            {
+                name: "Islamic Relief Worldwide",
+                desc: "Large international Muslim charity operating in dozens of countries, with a Zakat policy reviewed by Islamic scholars for Shariah compliance.",
+                links: [
+                    { label: "Website", url: "https://islamic-relief.org/" }
+                ]
+            },
+            {
+                name: "Zakat Foundation",
+                desc: "US-based Islamic charity focused on Zakat-funded relief, education, and community development programs worldwide.",
+                links: [
+                    { label: "Website", url: "https://www.zakat.org/" }
+                ]
+            },
+            {
+                name: "IOM Islamic Philanthropy Fund",
+                desc: "The UN Migration Agency's Shariah-compliant Zakat fund, supporting migrants, displaced people, and other vulnerable groups; its Zakat policy has been reviewed under fatwas from Islamic scholarly bodies.",
+                links: [
+                    { label: "Website", url: "https://zakat.iom.int/" }
+                ]
+            }
+        ];
+
+        // Where someone in Japan can turn to if they need financial or material help.
+        const receive = [
+            {
+                name: "Japan Islamic Trust (Otsuka Masjid)",
+                desc: "Distributes entrusted Zakat to people who qualify under Islamic guidelines. Also runs a Yatim (orphan) support fund for orphans and families in Japan, and a scholarship fund for Muslim students facing school costs. Contact the masjid directly to ask about eligibility and how to apply.",
+                links: [
+                    { label: "Contact / Info Page", url: "https://islam.or.jp/en/" }
+                ]
+            },
+            {
+                name: "Japan Muslim Association (JMA)",
+                desc: "Can advise on where to seek community support or Zakat assistance if you are new to Japan or unsure who to contact locally.",
+                links: [
+                    { label: "Website", url: "https://www.muslim.or.jp/" }
+                ]
+            },
+            {
+                name: "Your local mosque",
+                desc: "Most mosques in Japan can connect families in need with local Zakat committees or community members willing to help, even if they don't run a formal fund themselves.",
+                links: []
+            }
+        ];
+
+        renderOrgList('giveJapanList', giveJapan);
+        renderOrgList('giveGlobalList', giveGlobal);
+        renderOrgList('receiveList', receive);
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

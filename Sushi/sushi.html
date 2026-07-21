@@ -1,0 +1,422 @@
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Halal Sushi - Japan</title>
+        <style>
+            :root {
+                --ink: #1b2b28;
+                --paper: #f4efe4;
+                --deep-green: #0f3d3e;
+                --gold: #b98a2f;
+                --line: rgba(15, 61, 62, 0.15);
+                --card: #ffffff;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Noto Sans', 'Segoe UI', sans-serif;
+                background: var(--paper);
+                color: var(--ink);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pattern {
+                width: 100%;
+                height: 10px;
+                background:
+                    linear-gradient(135deg, var(--deep-green) 25%, transparent 25%) -5px 0,
+                    linear-gradient(225deg, var(--deep-green) 25%, transparent 25%) -5px 0;
+                background-size: 10px 10px;
+                background-color: var(--gold);
+            }
+
+            header {
+                text-align: center;
+                padding: 48px 20px 24px;
+                max-width: 640px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+                margin: 0 0 8px;
+                color: var(--deep-green);
+                letter-spacing: 0.5px;
+            }
+
+            header p {
+                margin: 0;
+                font-size: 1.05rem;
+                opacity: 0.85;
+                line-height: 1.6;
+            }
+
+            main {
+                width: 100%;
+                max-width: 560px;
+                padding: 0 20px 60px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .card {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                padding: 28px 24px;
+                text-align: center;
+                box-shadow: 0 6px 20px rgba(15, 61, 62, 0.06);
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 1.05rem;
+                font-weight: 600;
+                color: #fff;
+                background: var(--deep-green);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: transform .15s ease, background .2s ease;
+            }
+
+            .btn:hover {
+                background: #0c3132;
+                transform: translateY(-1px);
+            }
+
+            .btn:active {
+                transform: translateY(0);
+            }
+
+            .btn:focus-visible {
+                outline: 3px solid var(--gold);
+                outline-offset: 2px;
+            }
+
+            .btn svg {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
+
+            .status {
+                margin-top: 14px;
+                font-size: 0.92rem;
+                min-height: 1.2em;
+                color: var(--deep-green);
+            }
+
+            .status.error {
+                color: #a33;
+            }
+
+            .manual {
+                display: flex;
+                gap: 8px;
+            }
+
+            .manual input {
+                flex: 1;
+                padding: 12px 14px;
+                border-radius: 8px;
+                border: 1px solid var(--line);
+                font-size: 1rem;
+                font-family: inherit;
+            }
+
+            .manual input:focus-visible {
+                outline: 2px solid var(--gold);
+            }
+
+            .manual button {
+                padding: 12px 18px;
+                border-radius: 8px;
+                border: none;
+                background: var(--gold);
+                color: #2a2000;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .manual button:hover {
+                filter: brightness(0.95);
+            }
+
+            .section-title {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--deep-green);
+                opacity: 0.7;
+                margin: 0 0 14px;
+                text-align: left;
+            }
+
+            .filter-row {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 16px;
+            }
+
+            .chip {
+                padding: 8px 14px;
+                border-radius: 999px;
+                border: 1px solid var(--line);
+                background: var(--paper);
+                font-size: 0.85rem;
+                cursor: pointer;
+                color: var(--ink);
+            }
+
+            .chip.active {
+                background: var(--deep-green);
+                color: #fff;
+                border-color: var(--deep-green);
+            }
+
+            .place-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                text-align: left;
+            }
+
+            .place-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 14px;
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                background: var(--paper);
+                text-decoration: none;
+                color: var(--ink);
+                transition: background .15s ease, transform .15s ease;
+            }
+
+            .place-item:hover {
+                background: #ece5d3;
+                transform: translateX(2px);
+            }
+
+            .place-item .name {
+                font-weight: 600;
+                font-size: 0.98rem;
+            }
+
+            .place-item .region {
+                font-size: 0.82rem;
+                opacity: 0.65;
+                display: block;
+                margin-top: 2px;
+            }
+
+            .place-item .tag {
+                font-size: 0.72rem;
+                background: var(--gold);
+                color: #2a2000;
+                padding: 2px 8px;
+                border-radius: 999px;
+                margin-left: 8px;
+                white-space: nowrap;
+            }
+
+            .place-item .arrow {
+                opacity: 0.5;
+                flex-shrink: 0;
+                margin-left: 10px;
+            }
+
+            .place-item .right {
+                display: flex;
+                align-items: center;
+            }
+
+            footer {
+                padding: 20px;
+                font-size: 0.85rem;
+                opacity: 0.6;
+                text-align: center;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+
+                .btn,
+                .place-item {
+                    transition: none;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="pattern"></div>
+
+        <header>
+            <h1>Halal Sushi</h1>
+            <p>Find halal-certified or halal-friendly sushi restaurants near you in Japan.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <p class="section-title">Use your location</p>
+                <button class="btn" id="locateBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z" />
+                        <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                    Find Nearby Halal Sushi
+                </button>
+                <div class="status" id="status"></div>
+            </div>
+
+            <div class="card">
+                <p class="section-title">Or search by city / area</p>
+                <div class="manual">
+                    <input type="text" id="placeInput" placeholder="e.g. Ikebukuro, Tokyo">
+                    <button id="searchBtn">Search</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <p class="section-title">Known halal sushi spots in Japan</p>
+                <div class="filter-row" id="filterRow">
+                    <button class="chip active" data-filter="all">All</button>
+                    <button class="chip" data-filter="Certified">Certified Halal</button>
+                    <button class="chip" data-filter="Friendly">Muslim-Friendly</button>
+                </div>
+                <div class="place-list" id="placeList"></div>
+            </div>
+        </main>
+
+        <footer>Results open in Google Maps in a new tab. Halal status can change — please confirm certification with
+            the restaurant directly.</footer>
+
+        <script>
+            const statusEl = document.getElementById('status');
+            const locateBtn = document.getElementById('locateBtn');
+            const placeInput = document.getElementById('placeInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const placeListEl = document.getElementById('placeList');
+            const filterRow = document.getElementById('filterRow');
+
+            // A short starter list of known halal / muslim-friendly sushi spots in Japan.
+            // "Certified" = holds a formal halal certification.
+            // "Friendly" = advertises halal-friendly / no-alcohol / no-pork menu but not formally certified.
+            // Update or extend this list as you verify more places.
+            const knownPlaces = [
+                { name: "Sushi Ken", region: "Asakusa, Tokyo", tag: "Certified" },
+                { name: "Halal Sushi Ken", region: "Narita, Chiba", tag: "Certified" },
+                { name: "Naritaya Halal Ramen & Sushi", region: "Asakusa, Tokyo", tag: "Friendly" },
+                { name: "Sushi Dokoro Nihonbashi Kakigaracho Sugita", region: "Chuo, Tokyo", tag: "Friendly" },
+                { name: "Musashi Halal Sushi", region: "Shinjuku, Tokyo", tag: "Certified" },
+                { name: "Halal Wagyu Yakiniku & Sushi M", region: "Shibuya, Tokyo", tag: "Friendly" },
+                { name: "Osaka Halal Sushi Bar", region: "Namba, Osaka", tag: "Friendly" }
+            ];
+
+            function mapsSearchUrl(query) {
+                return 'https://www.google.com/maps/search/' + encodeURIComponent(query);
+            }
+
+            function renderPlaceList(filter) {
+                placeListEl.innerHTML = '';
+                const filtered = filter === 'all' ? knownPlaces : knownPlaces.filter(p => p.tag === filter);
+                if (filtered.length === 0) {
+                    placeListEl.innerHTML = '<p style="opacity:0.6;font-size:0.9rem;">No entries in this category yet.</p>';
+                    return;
+                }
+                filtered.forEach(p => {
+                    const a = document.createElement('a');
+                    a.className = 'place-item';
+                    a.href = mapsSearchUrl(p.name + ' ' + p.region);
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.innerHTML = `
+        <span>
+          <span class="name">${p.name}</span>
+          <span class="region">${p.region}</span>
+        </span>
+        <span class="right">
+          <span class="tag">${p.tag}</span>
+          <span class="arrow">&#8250;</span>
+        </span>
+      `;
+                    placeListEl.appendChild(a);
+                });
+            }
+            renderPlaceList('all');
+
+            filterRow.addEventListener('click', (e) => {
+                const btn = e.target.closest('.chip');
+                if (!btn) return;
+                filterRow.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                renderPlaceList(btn.dataset.filter);
+            });
+
+            locateBtn.addEventListener('click', () => {
+                if (!navigator.geolocation) {
+                    statusEl.textContent = 'Sorry, your browser does not support location.';
+                    statusEl.classList.add('error');
+                    return;
+                }
+
+                statusEl.classList.remove('error');
+                statusEl.textContent = 'Finding your location...';
+
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const { latitude, longitude } = pos.coords;
+                        statusEl.textContent = 'Location found, opening map...';
+                        const url = `https://www.google.com/maps/search/halal+sushi/@${latitude},${longitude},13z`;
+                        window.open(url, '_blank');
+                        statusEl.textContent = 'Nearby halal sushi spots are shown on the map.';
+                    },
+                    (err) => {
+                        statusEl.classList.add('error');
+                        if (err.code === err.PERMISSION_DENIED) {
+                            statusEl.textContent = 'Location permission denied. Allow it in your browser settings, or search by city below.';
+                        } else {
+                            statusEl.textContent = 'Could not get your location. Try searching by city below.';
+                        }
+                    }
+                );
+            });
+
+            function searchByPlace() {
+                const place = placeInput.value.trim();
+                if (!place) {
+                    placeInput.focus();
+                    return;
+                }
+                window.open(mapsSearchUrl('halal sushi near ' + place + ', Japan'), '_blank');
+            }
+
+            searchBtn.addEventListener('click', searchByPlace);
+            placeInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') searchByPlace();
+            });
+        </script>
+
+    </body>
+
+    </html>
