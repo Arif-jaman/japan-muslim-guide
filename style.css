@@ -11,7 +11,7 @@
     border-radius: 15px;
     text-align: center;
     direction: rtl;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -39,7 +39,7 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo span {
@@ -47,14 +47,14 @@ body {
 }
 
 .tagline {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     margin-top: 5px;
     font-size: 1.1rem;
 }
 
 /* Navigation */
 .nav {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -68,7 +68,7 @@ body {
     padding: 10px 25px;
     border-radius: 25px;
     transition: all 0.3s;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav a:hover {
@@ -91,7 +91,7 @@ body {
 
 .hero p {
     font-size: 1.2rem;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -108,7 +108,7 @@ body {
     background: #fff;
     border-radius: 50px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .search-box input {
@@ -145,7 +145,7 @@ body {
 }
 
 .filter-btn {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border: 2px solid #ff6b35;
     color: #fff;
     padding: 10px 20px;
@@ -154,7 +154,8 @@ body {
     transition: all 0.3s;
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover,
+.filter-btn.active {
     background: #ff6b35;
 }
 
@@ -170,12 +171,38 @@ body {
     font-size: 2rem;
 }
 
-#map {
+/* #map {
     height: 450px;
     border-radius: 20px;
     max-width: 1200px;
     margin: 0 auto;
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+} */
+
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+#location-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #198754;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#location-btn:hover {
+    opacity: 0.9;
+}
+
+#location-status {
+    margin: 10px 0;
+    font-size: 14px;
 }
 
 /* Restaurant Cards */
@@ -202,13 +229,13 @@ body {
     background: linear-gradient(145deg, #1e2a4a, #16213e);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .restaurant-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(255,107,53,0.2);
+    box-shadow: 0 20px 50px rgba(255, 107, 53, 0.2);
 }
 
 .card-image {
@@ -231,7 +258,7 @@ body {
 }
 
 .card-content .location {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -246,7 +273,7 @@ body {
 }
 
 .tag {
-    background: rgba(255,107,53,0.2);
+    background: rgba(255, 107, 53, 0.2);
     color: #ff6b35;
     padding: 5px 12px;
     border-radius: 15px;
@@ -254,12 +281,12 @@ body {
 }
 
 .tag.halal {
-    background: rgba(76,175,80,0.2);
+    background: rgba(76, 175, 80, 0.2);
     color: #4CAF50;
 }
 
 .tag.prayer {
-    background: rgba(33,150,243,0.2);
+    background: rgba(33, 150, 243, 0.2);
     color: #2196F3;
 }
 
@@ -275,7 +302,7 @@ body {
     align-items: center;
     gap: 5px;
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .feature-icon {
@@ -310,13 +337,13 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Prayer Room & Sushi Bar Section */
@@ -354,7 +381,7 @@ body {
 }
 
 .info-card p {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
 }
 
@@ -366,16 +393,16 @@ body {
 
 .info-list li {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 10px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Footer */
 .footer {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     padding: 40px 20px;
     text-align: center;
     margin-top: 40px;
@@ -390,7 +417,7 @@ body {
 }
 
 .footer-links a {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -400,7 +427,7 @@ body {
 }
 
 .footer p {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Custom Marker */
@@ -415,14 +442,36 @@ body {
     .logo {
         font-size: 1.8rem;
     }
+
     .hero h1 {
         font-size: 1.8rem;
     }
+
     .nav {
         gap: 10px;
     }
+
     .nav a {
         padding: 8px 15px;
         font-size: 0.9rem;
     }
 }
+/* ===== Map tools, detail card, pins ===== */
+.map-tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.map-tools button,.map-tools select{padding:10px 18px;border:none;border-radius:8px;background:#198754;color:#fff;font-size:16px;cursor:pointer}
+.map-tools select{background:#fff;color:#222}
+#location-status{text-align:center;margin:10px 0;font-size:14px}
+#location-status.err{color:#ff8a8a}
+.map-wrap{position:relative;max-width:1200px;margin:0 auto}
+#sheet{position:absolute;z-index:1000;left:10px;right:10px;bottom:10px;background:#fff;color:#1a1a2e;border-radius:14px;padding:16px;box-shadow:0 4px 20px #0006;max-height:60%;overflow:auto}
+#sheet[hidden]{display:none}
+#sheet-close{position:absolute;top:6px;right:8px;border:none;background:none;font-size:20px;cursor:pointer}
+#sheet h3{margin:0 28px 4px 0}
+#sheet .meta{font-size:14px;margin:3px 0;color:#444}
+#sheet .warn{color:#b45309}
+#sheet .acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+#sheet .acts a{padding:10px 14px;border-radius:8px;background:#198754;color:#fff;text-decoration:none}
+#sheet .acts a.alt{background:#fff;color:#198754;border:1px solid #198754}
+.pin{width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px #0006}
+.pin span{transform:rotate(45deg);font-size:15px}
+@media(min-width:700px){#sheet{right:auto;width:380px}}

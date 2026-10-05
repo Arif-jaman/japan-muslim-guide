@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en, arabic, ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halal Restaurant Japan | Find Halal Food in Japan</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -53,8 +56,8 @@
     <!-- Search -->
     <div class="search-container">
         <div class="search-box">
-            <input type="text" placeholder="Enter area or restaurant name...">
-            <button>🔍 Search</button>
+            <input type="text" id="place-search" placeholder="Search mosque, halal restaurant, prayer room...">
+            <button id="search-btn">🔍 Search</button>
         </div>
     </div>
 
@@ -62,10 +65,35 @@
    
 
     <!-- Map Section -->
-    <section class="map-section" id="map-section">
-        <h2>📍 Restaurant Map</h2>
+<section class="map-section" id="map-section">
+    <h2>📍 Halal Map</h2>
+
+    <div class="filters" id="filters">
+        <button class="filter-btn active" data-f="all">All</button>
+        <button class="filter-btn" data-f="mosque">🕌 Mosques</button>
+        <button class="filter-btn" data-f="restaurant">🍽️ Halal Restaurants</button>
+        <button class="filter-btn" data-f="prayer">🙏 Prayer Rooms</button>
+    </div>
+
+    <div class="map-tools">
+        <button id="location-btn">📍 My Location</button>
+        <button id="near-btn">🔎 Search Near Me</button>
+        <select id="radius" aria-label="Distance">
+            <option value="1">1 km</option><option value="3">3 km</option>
+            <option value="5" selected>5 km</option><option value="10">10 km</option>
+        </select>
+    </div>
+
+    <p id="location-status">Tap “My Location” to find places near you. Your location stays in your browser and is never stored.</p>
+
+    <div class="map-wrap">
         <div id="map"></div>
-    </section>
+        <div id="sheet" hidden>
+            <button id="sheet-close" aria-label="Close">✕</button>
+            <div id="sheet-body"></div>
+        </div>
+    </div>
+</section>
 
     <!-- Restaurant Cards -->
     <section class="restaurants" id="restaurants">
@@ -80,7 +108,7 @@
                 </div>
 
                 <div class="card-content">
-                    <h3>池袋</h3>
+                    <h3>Ikebukuro Halal Restaurant</h3>
                     <div class="location">📍 Ikebukuro, Tokyo</div>
                     <div class="tags">
                         <span class="tag halal">✓ Halal Certified Restaurant</span>
@@ -270,6 +298,9 @@
 
     <!-- Leaflet Map Script -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="script.js"></script>
 
 </body>
